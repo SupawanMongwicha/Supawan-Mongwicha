@@ -1,11 +1,11 @@
 <h1 align="center">Hi 👋, I'm Supawan</h1>
-<h3 align="center">Aspiring Data Analyst | Business Analyst</h3>
+<h3 align="center"> Data Analyst | Business Analyst</h3>
 
 ---
 
 🌱 I’m currently learning: **SQL**, **Excel**, **Power BI**, **Python**  
 📊 I love turning raw data into actionable insights  
-📫 Reach me at: your.email@example.com  
+📫 Reach me at:Here
 
 ---
 
@@ -26,6 +26,6 @@
 
 ---
 
-## 📎 Resume:
+## 📎
 
 ---
