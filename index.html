@@ -537,64 +537,52 @@
     min-width: 0;
   }
 
-  .career-card {
-    background: #223d73;
-    color: #ffffff;
-    border-radius: 0 22px 22px 22px;
-    padding: 1rem 1rem .9rem;
-    box-shadow: 0 10px 24px rgba(34, 61, 115, .18);
-  }
+.career-card {
+  background: linear-gradient(180deg, #1a5c38 0%, #11412b 100%);
+  color: #f4fbf7;
+  border-radius: 0 22px 22px 22px;
+  padding: 1rem 1rem .9rem;
+  border: 1px solid rgba(184, 222, 202, .26);
+  box-shadow: 0 10px 24px rgba(26, 92, 56, .18);
+}
 
-  .career-card h3 {
-    font-size: 1rem;
-    font-weight: 700;
-    margin-bottom: .8rem;
-    color: #ffffff;
-  }
+.career-card h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: .8rem;
+  color: #f4fbf7;
+}
 
-  .career-list {
-    display: flex;
-    flex-direction: column;
-    gap: .5rem;
-  }
+.career-years {
+  font-size: .78rem;
+  font-weight: 700;
+  color: #e8f5ee;
+  white-space: nowrap;
+}
 
-  .career-row {
-    display: grid;
-    grid-template-columns: 62px 1fr;
-    gap: .55rem;
-    align-items: center;
-  }
+.career-bar {
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(232, 245, 238, .14);
+  overflow: hidden;
+  position: relative;
+}
 
-  .career-years {
-    font-size: .78rem;
-    font-weight: 700;
-    color: #f5f7ff;
-    white-space: nowrap;
-  }
+.career-bar > span {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #2d8653, #3dab6a, #c9a84c);
+}
 
-  .career-bar {
-    height: 10px;
-    border-radius: 999px;
-    background: rgba(255,255,255,.14);
-    overflow: hidden;
-    position: relative;
-  }
-
-  .career-bar > span {
-    display: block;
-    height: 100%;
-    border-radius: 999px;
-    background: linear-gradient(90deg, #7a00ff, #b000ff);
-  }
-
-  .career-role {
-    grid-column: 2 / 3;
-    margin-top: -.15rem;
-    font-size: .8rem;
-    font-weight: 600;
-    color: #ffffff;
-    line-height: 1.35;
-  }
+.career-role {
+  grid-column: 2 / 3;
+  margin-top: -.15rem;
+  font-size: .8rem;
+  font-weight: 600;
+  color: #f4fbf7;
+  line-height: 1.35;
+}
 
   .mini-summary {
     margin-top: .55rem;
