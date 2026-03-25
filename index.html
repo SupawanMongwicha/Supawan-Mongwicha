@@ -700,7 +700,6 @@
       <div class="photo-ring"></div>
       <img id="profilePhoto" src="images/profile.jpg" alt="Profile Photo" />
      
-      <input type="file" id="photoInput" accept="image/*" />
     </div>
 
     <div class="s-name">
@@ -962,30 +961,7 @@
   </main>
 </div>
 
-<script>
-  const wrap = document.getElementById('photoWrap');
-  const input = document.getElementById('photoInput');
-  const photo = document.getElementById('profilePhoto');
-  const STORE_KEY = 'resume_photo_dao';
 
-  const saved = localStorage.getItem(STORE_KEY);
-  if (saved) photo.src = saved;
-
-  wrap.addEventListener('click', () => input.click());
-
-  input.addEventListener('change', function () {
-    const file = this.files[0];
-    if (!file) return;
-
-    const reader = new FileReader();
-    reader.onload = function (e) {
-      const dataURL = e.target.result;
-      photo.src = dataURL;
-      try { localStorage.setItem(STORE_KEY, dataURL); } catch(e) {}
-    };
-    reader.readAsDataURL(file);
-  });
-</script>
 
 </body>
 </html>
