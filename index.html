@@ -525,6 +525,94 @@
   object-fit: cover;
   border: 3px solid #2d8653;
 }
+
+  .header-top {
+    display: grid;
+    grid-template-columns: 1fr 250px;
+    gap: 1.2rem;
+    align-items: start;
+  }
+
+  .header-left {
+    min-width: 0;
+  }
+
+  .career-card {
+    background: #223d73;
+    color: #ffffff;
+    border-radius: 0 22px 22px 22px;
+    padding: 1rem 1rem .9rem;
+    box-shadow: 0 10px 24px rgba(34, 61, 115, .18);
+  }
+
+  .career-card h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: .8rem;
+    color: #ffffff;
+  }
+
+  .career-list {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+  }
+
+  .career-row {
+    display: grid;
+    grid-template-columns: 62px 1fr;
+    gap: .55rem;
+    align-items: center;
+  }
+
+  .career-years {
+    font-size: .78rem;
+    font-weight: 700;
+    color: #f5f7ff;
+    white-space: nowrap;
+  }
+
+  .career-bar {
+    height: 10px;
+    border-radius: 999px;
+    background: rgba(255,255,255,.14);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .career-bar > span {
+    display: block;
+    height: 100%;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #7a00ff, #b000ff);
+  }
+
+  .career-role {
+    grid-column: 2 / 3;
+    margin-top: -.15rem;
+    font-size: .8rem;
+    font-weight: 600;
+    color: #ffffff;
+    line-height: 1.35;
+  }
+
+  .mini-summary {
+    margin-top: .55rem;
+    font-size: .76rem;
+    color: var(--soft);
+    line-height: 1.5;
+  }
+
+  @media (max-width:700px) {
+    .header-top {
+      grid-template-columns: 1fr;
+    }
+
+    .career-card {
+      border-radius: 18px;
+    }
+  }
+
 </style>
 </head>
 <body>
@@ -638,14 +726,69 @@
   <main class="main">
 
     <!-- Header -->
-    <header class="main-header">
-      <div class="deco-line">IT</div>
+ <header class="main-header">
+  <div class="deco-line">IT</div>
+
+  <div class="header-top">
+    <div class="header-left">
       <h1>
         <span class="first">Supawan</span><br/>
         Mongwicha
       </h1>
       <div class="sub">IT Application Engineer &nbsp;·&nbsp; Business Analyst &nbsp;·&nbsp; Software Developer</div>
-    </header>
+      <div class="mini-summary">
+        Experience in ERP, MES, application support, database troubleshooting, internal system development,
+        and business process improvement across manufacturing and supply chain environments.
+      </div>
+    </div>
+
+    <div class="career-card">
+      <h3>Career Snapshot</h3>
+
+      <div class="career-list">
+        <div>
+          <div class="career-row">
+            <div class="career-years">5 Y</div>
+            <div class="career-bar"><span style="width:100%"></span></div>
+          </div>
+          <div class="career-role">Software Engineer</div>
+        </div>
+
+        <div>
+          <div class="career-row">
+            <div class="career-years">3 Y 2 M</div>
+            <div class="career-bar"><span style="width:64%"></span></div>
+          </div>
+          <div class="career-role">IT Business Analyst</div>
+        </div>
+
+        <div>
+          <div class="career-row">
+            <div class="career-years">2 Y</div>
+            <div class="career-bar"><span style="width:40%"></span></div>
+          </div>
+          <div class="career-role">IT Application Engineer</div>
+        </div>
+
+        <div>
+          <div class="career-row">
+            <div class="career-years">1 Y</div>
+            <div class="career-bar"><span style="width:20%"></span></div>
+          </div>
+          <div class="career-role">.NET Developer</div>
+        </div>
+
+        <div>
+          <div class="career-row">
+            <div class="career-years">7 M</div>
+            <div class="career-bar"><span style="width:12%"></span></div>
+          </div>
+          <div class="career-role">Software Administrator</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
 
     <!-- Experience -->
     <section class="section">
