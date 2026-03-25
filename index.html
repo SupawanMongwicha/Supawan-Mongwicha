@@ -10,7 +10,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500;600&family=Cinzel:wght@400;600&display=swap" rel="stylesheet"/>
 
 <style>
-  /* ─── DESIGN TOKENS ─────────────────────────────── */
   :root {
     --forest:   #0d3320;
     --pine:     #1a5c38;
@@ -30,7 +29,6 @@
     --font-body:    'DM Sans', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
   }
 
-  /* ─── RESET ─────────────────────────────────────── */
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { font-size: 14px; }
 
@@ -44,27 +42,32 @@
     padding: 2rem 1rem 4rem;
     animation: pageFade .6s ease both;
   }
-  @keyframes pageFade { from { opacity:0; transform:translateY(12px) } to { opacity:1; transform:none } }
 
-  /* ─── UPLOAD HINT BAR ────────────────────────────── */
+  @keyframes pageFade {
+    from { opacity:0; transform:translateY(12px) }
+    to { opacity:1; transform:none }
+  }
+
   .hint-bar {
+    width: 100%;
+    max-width: 1150px;
     background: var(--forest);
     color: var(--gold-lt);
     font-family: var(--font-body);
     font-size: .78rem;
     font-weight: 500;
-    letter-spacing: .06em;
-    padding: .55rem 1.4rem;
+    letter-spacing: .03em;
+    padding: .75rem 1.4rem;
     border-radius: 40px;
     margin-bottom: 1.6rem;
     display: flex;
     align-items: center;
-    gap: .5rem;
+    gap: .6rem;
     box-shadow: 0 4px 18px rgba(13,51,32,.25);
   }
+
   .hint-bar svg { flex-shrink:0; }
 
-  /* ─── PAGE / PAPER ───────────────────────────────── */
   .page {
     width: 860px;
     max-width: 100%;
@@ -79,16 +82,15 @@
     grid-template-columns: 260px 1fr;
   }
 
-  /* ─── LEFT SIDEBAR ───────────────────────────────── */
   .sidebar {
     background: var(--forest);
     padding: 2.4rem 1.6rem 2.4rem 1.8rem;
     display: flex;
     flex-direction: column;
-    gap: 0;
     position: relative;
     overflow: hidden;
   }
+
   .sidebar::before {
     content:'';
     position:absolute;
@@ -97,6 +99,7 @@
     background: radial-gradient(circle, rgba(45,134,83,.35) 0%, transparent 70%);
     pointer-events:none;
   }
+
   .sidebar::after {
     content:'';
     position:absolute;
@@ -106,7 +109,6 @@
     pointer-events:none;
   }
 
-  /* Photo */
   .photo-wrap {
     position: relative;
     width: 110px;
@@ -114,6 +116,7 @@
     margin: 0 auto 1.6rem;
     cursor: pointer;
   }
+
   .photo-wrap img {
     width: 100%;
     height: 100%;
@@ -124,7 +127,9 @@
     background: var(--pine);
     transition: filter .3s;
   }
+
   .photo-wrap:hover img { filter: brightness(.65); }
+
   .photo-overlay {
     position: absolute;
     inset: 0;
@@ -138,7 +143,9 @@
     transition: opacity .3s;
     pointer-events: none;
   }
+
   .photo-wrap:hover .photo-overlay { opacity: 1; }
+
   .photo-overlay span {
     font-family: var(--font-body);
     font-size: .62rem;
@@ -147,7 +154,9 @@
     letter-spacing: .07em;
     text-transform: uppercase;
   }
+
   #photoInput { display:none; }
+
   .photo-ring {
     position: absolute;
     inset: -5px;
@@ -156,13 +165,22 @@
     opacity: .5;
     animation: spin 18s linear infinite;
   }
+
   @keyframes spin { to { transform:rotate(360deg) } }
 
-  /* Sidebar name block */
+  #profilePhoto {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #2d8653;
+  }
+
   .s-name {
     text-align: center;
     margin-bottom: 1.8rem;
   }
+
   .s-name h1 {
     font-family: var(--font-display);
     font-size: 1.18rem;
@@ -173,6 +191,7 @@
     line-height: 1.3;
     margin-bottom: .3rem;
   }
+
   .s-name .nickname {
     font-family: var(--font-heading);
     font-style: italic;
@@ -180,6 +199,7 @@
     color: var(--gold-lt);
     font-weight: 300;
   }
+
   .s-name .title-tag {
     margin-top: .5rem;
     font-family: var(--font-body);
@@ -190,7 +210,6 @@
     color: var(--jade);
   }
 
-  /* Divider */
   .s-divider {
     width: 40px;
     height: 1px;
@@ -198,7 +217,6 @@
     margin: 0 auto 1.6rem;
   }
 
-  /* Contact */
   .s-section-title {
     font-family: var(--font-display);
     font-size: .65rem;
@@ -207,14 +225,17 @@
     text-transform: uppercase;
     color: var(--jade);
     margin-bottom: .9rem;
+    margin-top: 1.1rem;
   }
+
   .contact-list {
     list-style: none;
     display: flex;
     flex-direction: column;
     gap: .65rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1.6rem;
   }
+
   .contact-list li {
     display: flex;
     align-items: flex-start;
@@ -223,6 +244,7 @@
     color: #c4dcd0;
     line-height: 1.4;
   }
+
   .contact-list .ic {
     color: var(--gold);
     font-size: .9rem;
@@ -230,9 +252,10 @@
     margin-top: .05rem;
   }
 
-  /* Skills */
-  .skill-block { margin-bottom: 1.8rem; }
+  .skill-block { margin-bottom: 1.6rem; }
+
   .skill-item { margin-bottom: .85rem; }
+
   .skill-label {
     font-family: var(--font-body);
     font-size: .72rem;
@@ -241,14 +264,22 @@
     margin-bottom: .3rem;
     display: flex;
     justify-content: space-between;
+    gap: .6rem;
   }
-  .skill-label span { color: var(--gold); font-size: .65rem; }
+
+  .skill-label span {
+    color: var(--gold);
+    font-size: .65rem;
+    white-space: nowrap;
+  }
+
   .skill-bar {
     height: 3px;
     background: rgba(255,255,255,.1);
     border-radius: 2px;
     overflow: hidden;
   }
+
   .skill-fill {
     height: 100%;
     background: linear-gradient(90deg, var(--jade), var(--gold));
@@ -258,15 +289,16 @@
     animation: barIn .9s cubic-bezier(.22,1,.36,1) both;
     animation-delay: var(--d, .3s);
   }
+
   @keyframes barIn { to { transform:scaleX(1) } }
 
-  /* Tags */
   .tag-cloud {
     display: flex;
     flex-wrap: wrap;
     gap: .4rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1.8rem;
   }
+
   .tag {
     background: rgba(255,255,255,.07);
     border: 1px solid rgba(61,171,106,.35);
@@ -278,7 +310,6 @@
     border-radius: 3px;
   }
 
-  /* Lang */
   .lang-item {
     display: flex;
     align-items: center;
@@ -287,36 +318,41 @@
     font-size: .74rem;
     color: #c4dcd0;
   }
+
   .lang-dots { display:flex; gap:3px; }
+
   .dot {
-    width: 7px; height: 7px;
+    width: 7px;
+    height: 7px;
     border-radius: 50%;
     background: rgba(255,255,255,.15);
   }
+
   .dot.on { background: var(--jade); }
 
-  /* ─── MAIN CONTENT ───────────────────────────────── */
   .main {
     padding: 2.4rem 2.2rem 2.4rem 2rem;
     display: flex;
     flex-direction: column;
-    gap: 0;
   }
 
-  /* Header */
   .main-header {
     margin-bottom: 1.8rem;
     padding-bottom: 1.4rem;
     border-bottom: 1px solid var(--rule);
     position: relative;
   }
+
   .main-header::after {
     content:'';
     position:absolute;
-    bottom:-1px; left:0;
-    width:60px; height:2px;
+    bottom:-1px;
+    left:0;
+    width:60px;
+    height:2px;
     background: linear-gradient(90deg, var(--emerald), var(--jade));
   }
+
   .main-header h1 {
     font-family: var(--font-display);
     font-size: 2rem;
@@ -326,7 +362,9 @@
     text-transform: uppercase;
     line-height: 1.1;
   }
+
   .main-header .first { color: var(--emerald); }
+
   .main-header .sub {
     font-family: var(--font-heading);
     font-style: italic;
@@ -335,9 +373,11 @@
     font-weight: 300;
     margin-top: .25rem;
   }
+
   .main-header .deco-line {
     position: absolute;
-    right: 0; top: .5rem;
+    right: 0;
+    top: .5rem;
     font-family: var(--font-heading);
     font-style: italic;
     font-size: 4rem;
@@ -348,183 +388,26 @@
     user-select:none;
   }
 
-  /* Section */
-  .section { margin-bottom: 1.8rem; }
-  .sec-title {
-    font-family: var(--font-display);
-    font-size: .68rem;
-    font-weight: 600;
-    letter-spacing: .22em;
-    text-transform: uppercase;
-    color: var(--emerald);
-    margin-bottom: 1rem;
-    display: flex;
-    align-items: center;
-    gap: .7rem;
-  }
-  .sec-title::after {
-    content:'';
-    flex: 1;
-    height: 1px;
-    background: var(--rule);
-  }
-
-  /* Experience item */
-  .exp-item {
-    display: grid;
-    grid-template-columns: 3px 1fr;
-    gap: 0 1rem;
-    margin-bottom: 1.4rem;
+  .header-wrapper {
     position: relative;
-  }
-  .exp-item:last-child { margin-bottom:0; }
-  .timeline-line {
-    position: relative;
-  }
-  .timeline-line::before {
-    content:'';
-    position:absolute;
-    top:6px; left:0;
-    bottom:-1.4rem;
-    width:2px;
-    background: linear-gradient(180deg, var(--jade), rgba(45,134,83,.1));
-  }
-  .exp-item:last-child .timeline-line::before { display:none; }
-  .timeline-dot {
-    position:absolute;
-    top:5px; left:-3px;
-    width:8px; height:8px;
-    border-radius:50%;
-    background: var(--jade);
-    border: 2px solid var(--foam);
-    box-shadow: 0 0 0 1px var(--jade);
-    z-index:1;
-  }
-  .exp-body {}
-  .exp-role {
-    font-family: var(--font-heading);
-    font-size: 1.02rem;
-    font-weight: 600;
-    color: var(--forest);
-    line-height: 1.2;
-  }
-  .exp-meta {
-    display: flex;
-    align-items: center;
-    gap: .6rem;
-    flex-wrap: wrap;
-    margin: .2rem 0 .5rem;
-  }
-  .exp-company {
-    font-family: var(--font-body);
-    font-size: .73rem;
-    font-weight: 600;
-    color: var(--emerald);
-  }
-  .exp-sep { color: var(--rule); font-size: .7rem; }
-  .exp-period {
-    font-family: var(--font-body);
-    font-size: .68rem;
-    color: var(--soft);
-    font-weight: 400;
-  }
-  .exp-loc {
-    font-family: var(--font-body);
-    font-size: .68rem;
-    color: var(--soft);
-  }
-  .exp-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: .3rem;
-  }
-  .exp-list li {
-    font-family: var(--font-body);
-    font-size: .755rem;
-    color: var(--body-txt);
-    line-height: 1.55;
-    padding-left: .9rem;
-    position: relative;
-  }
-  .exp-list li::before {
-    content:'▸';
-    position:absolute;
-    left:0;
-    color: var(--jade);
-    font-size: .65rem;
-    top:.12rem;
+    padding: 1.2rem 1.4rem 1.4rem;
+    border: 2px solid var(--emerald);
+    border-left: 4px solid var(--jade);
+    border-radius: 10px;
+    background: rgba(232, 245, 238, 0.4);
+    box-shadow: 0 6px 18px rgba(13, 51, 32, 0.08);
   }
 
-  /* Education */
-  .edu-card {
-    background: linear-gradient(135deg, var(--mist) 0%, rgba(232,245,238,.4) 100%);
-    border: 1px solid var(--rule);
-    border-left: 3px solid var(--emerald);
-    border-radius: 4px;
-    padding: 1rem 1.2rem;
+  .header-wrapper::before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: 0;
+    width: 120px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--emerald), var(--jade));
+    border-top-left-radius: 10px;
   }
-  .edu-degree {
-    font-family: var(--font-heading);
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--forest);
-    line-height: 1.3;
-  }
-  .edu-major {
-    font-family: var(--font-heading);
-    font-style: italic;
-    font-size: .85rem;
-    color: var(--emerald);
-    margin: .15rem 0;
-  }
-  .edu-uni {
-    font-family: var(--font-body);
-    font-size: .73rem;
-    color: var(--body-txt);
-    margin-top: .3rem;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-  .edu-gpa {
-    background: var(--forest);
-    color: var(--gold-lt);
-    font-size: .66rem;
-    font-weight: 600;
-    letter-spacing: .06em;
-    padding: .15rem .5rem;
-    border-radius: 2px;
-  }
-
-  /* ─── PRINT ──────────────────────────────────────── */
-  @media print {
-    body { background:none; padding:0; }
-    .hint-bar { display:none; }
-    .page {
-      box-shadow:none;
-      width:100%;
-      border-radius:0;
-    }
-    .photo-overlay, .photo-ring { display:none; }
-    .skill-fill { animation:none; transform:scaleX(1); }
-  }
-
-  /* ─── RESPONSIVE ─────────────────────────────────── */
-  @media (max-width:700px) {
-    .page { grid-template-columns:1fr; }
-    .sidebar { padding:1.8rem 1.4rem; }
-    .main { padding:1.6rem 1.2rem; }
-    .main-header h1 { font-size:1.5rem; }
-    .main-header .deco-line { display:none; }
-  }
-  #profilePhoto {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 3px solid #2d8653;
-}
 
   .header-top {
     display: grid;
@@ -537,123 +420,289 @@
     min-width: 0;
   }
 
-.career-card {
-  background: linear-gradient(180deg, #1a5c38 0%, #11412b 100%);
-  color: #f4fbf7;
-  border-radius: 0 22px 22px 22px;
-  padding: 1rem 1rem .9rem;
-  border: 1px solid rgba(184, 222, 202, .26);
-  box-shadow: 0 10px 24px rgba(26, 92, 56, .18);
-}
-
-.career-card h3 {
-  font-size: 1rem;
-  font-weight: 700;
-  margin-bottom: .8rem;
-  color: #f4fbf7;
-}
-
-.career-years {
-  font-size: .78rem;
-  font-weight: 700;
-  color: #e8f5ee;
-  white-space: nowrap;
-}
-
-.career-bar {
-  height: 10px;
-  border-radius: 999px;
-  background: rgba(232, 245, 238, .14);
-  overflow: hidden;
-  position: relative;
-}
-
-.career-bar > span {
-  display: block;
-  height: 100%;
-  border-radius: 999px;
-  background: linear-gradient(90deg, #2d8653, #3dab6a, #c9a84c);
-}
-
-.career-role {
-  grid-column: 2 / 3;
-  margin-top: -.15rem;
-  font-size: .8rem;
-  font-weight: 600;
-  color: #f4fbf7;
-  line-height: 1.35;
-}
-
   .mini-summary {
     margin-top: .55rem;
     font-size: .76rem;
     color: var(--soft);
-    line-height: 1.5;
+    line-height: 1.55;
+    max-width: 95%;
+  }
+
+  .career-card {
+    background: linear-gradient(180deg, #1a5c38 0%, #11412b 100%);
+    color: #f4fbf7;
+    border-radius: 0 22px 22px 22px;
+    padding: 1rem 1rem .9rem;
+    border: 1px solid rgba(184, 222, 202, .26);
+    box-shadow: 0 10px 24px rgba(26, 92, 56, .18);
+  }
+
+  .career-card h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: .85rem;
+    color: #f4fbf7;
+  }
+
+  .career-list {
+    display: flex;
+    flex-direction: column;
+    gap: .72rem;
+  }
+
+  .career-item {
+    display: flex;
+    flex-direction: column;
+    gap: .22rem;
+  }
+
+  .career-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: .6rem;
+  }
+
+  .career-role {
+    font-size: .8rem;
+    font-weight: 600;
+    color: #f4fbf7;
+    line-height: 1.25;
+  }
+
+  .career-years {
+    font-size: .72rem;
+    font-weight: 700;
+    color: #e8f5ee;
+    white-space: nowrap;
+  }
+
+  .career-bar {
+    height: 10px;
+    border-radius: 999px;
+    background: rgba(232, 245, 238, .14);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .career-bar > span {
+    display: block;
+    height: 100%;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #2d8653, #3dab6a, #c9a84c);
+  }
+
+  .section { margin-bottom: 1.8rem; }
+
+  .sec-title {
+    font-family: var(--font-display);
+    font-size: .68rem;
+    font-weight: 600;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--emerald);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: .7rem;
+  }
+
+  .sec-title::after {
+    content:'';
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+  }
+
+  .exp-item {
+    display: grid;
+    grid-template-columns: 3px 1fr;
+    gap: 0 1rem;
+    margin-bottom: 1.4rem;
+    position: relative;
+  }
+
+  .exp-item:last-child { margin-bottom:0; }
+
+  .timeline-line {
+    position: relative;
+  }
+
+  .timeline-line::before {
+    content:'';
+    position:absolute;
+    top:6px;
+    left:0;
+    bottom:-1.4rem;
+    width:2px;
+    background: linear-gradient(180deg, var(--jade), rgba(45,134,83,.1));
+  }
+
+  .exp-item:last-child .timeline-line::before { display:none; }
+
+  .timeline-dot {
+    position:absolute;
+    top:5px;
+    left:-3px;
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background: var(--jade);
+    border: 2px solid var(--foam);
+    box-shadow: 0 0 0 1px var(--jade);
+    z-index:1;
+  }
+
+  .exp-role {
+    font-family: var(--font-heading);
+    font-size: 1.02rem;
+    font-weight: 600;
+    color: var(--forest);
+    line-height: 1.2;
+  }
+
+  .exp-meta {
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+    flex-wrap: wrap;
+    margin: .2rem 0 .5rem;
+  }
+
+  .exp-company {
+    font-family: var(--font-body);
+    font-size: .73rem;
+    font-weight: 600;
+    color: var(--emerald);
+  }
+
+  .exp-sep {
+    color: var(--rule);
+    font-size: .7rem;
+  }
+
+  .exp-period,
+  .exp-loc {
+    font-family: var(--font-body);
+    font-size: .68rem;
+    color: var(--soft);
+    font-weight: 400;
+  }
+
+  .exp-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: .3rem;
+  }
+
+  .exp-list li {
+    font-family: var(--font-body);
+    font-size: .755rem;
+    color: var(--body-txt);
+    line-height: 1.55;
+    padding-left: .9rem;
+    position: relative;
+  }
+
+  .exp-list li::before {
+    content:'▸';
+    position:absolute;
+    left:0;
+    color: var(--jade);
+    font-size: .65rem;
+    top:.12rem;
+  }
+
+  .edu-card {
+    background: linear-gradient(135deg, var(--mist) 0%, rgba(232,245,238,.4) 100%);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--emerald);
+    border-radius: 4px;
+    padding: 1rem 1.2rem;
+  }
+
+  .edu-degree {
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--forest);
+    line-height: 1.3;
+  }
+
+  .edu-major {
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-size: .85rem;
+    color: var(--emerald);
+    margin: .15rem 0;
+  }
+
+  .edu-uni {
+    font-family: var(--font-body);
+    font-size: .73rem;
+    color: var(--body-txt);
+    margin-top: .3rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .edu-gpa {
+    background: var(--forest);
+    color: var(--gold-lt);
+    font-size: .66rem;
+    font-weight: 600;
+    letter-spacing: .06em;
+    padding: .15rem .5rem;
+    border-radius: 2px;
+  }
+
+  @media print {
+    body { background:none; padding:0; }
+    .hint-bar { display:none; }
+    .page {
+      box-shadow:none;
+      width:100%;
+      border-radius:0;
+    }
+    .photo-overlay, .photo-ring { display:none; }
+    .skill-fill { animation:none; transform:scaleX(1); }
   }
 
   @media (max-width:700px) {
-    .header-top {
-      grid-template-columns: 1fr;
-    }
-
-    .career-card {
-      border-radius: 18px;
-    }
+    .page { grid-template-columns:1fr; }
+    .sidebar { padding:1.8rem 1.4rem; }
+    .main { padding:1.6rem 1.2rem; }
+    .main-header h1 { font-size:1.5rem; }
+    .main-header .deco-line { display:none; }
+    .header-top { grid-template-columns: 1fr; }
+    .career-card { border-radius: 18px; }
   }
-.header-wrapper {
-  position: relative;
-  padding: 1.2rem 1.4rem 1.4rem;
-  border: 2px solid var(--emerald);
-  border-left: 4px solid var(--jade);
-  border-radius: 10px;
-  background: rgba(232, 245, 238, 0.4);
-}
-
-.header-wrapper::before {
-  content: "";
-  position: absolute;
-  top: -2px;
-  left: 0;
-  width: 120px;
-  height: 3px;
-  background: linear-gradient(90deg, var(--emerald), var(--jade));
-  border-top-left-radius: 10px;
-}
-
-/* เงานิด ๆ ให้ไม่แบน */
-.header-wrapper {
-  box-shadow: 0 6px 18px rgba(13, 51, 32, 0.08);
-}
 </style>
 </head>
 <body>
 
-<!-- Hint bar -->
 <div class="hint-bar">
-  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+    <circle cx="12" cy="12" r="10"/>
+    <path d="M12 16v-4M12 8h.01"/>
+  </svg>
   IT Business Analyst and Software Engineer with experience in ERP, Application Support, Supply Chain systems, development, database management, troubleshooting, and system enhancement.
 </div>
 
 <div class="page">
 
-  <!-- ════ SIDEBAR ════ -->
   <aside class="sidebar">
 
-    <!-- Photo -->
-    <div class="photo-wrap" id="photoWrap" title="คลิกเพื่อเลือกรูปภาพ">
+    <div class="photo-wrap" id="photoWrap" title="Click to choose photo">
       <div class="photo-ring"></div>
-      <img id="profilePhoto"
-     src="images/profile.jpg"
-     alt="Profile Photo" />
-      <div class="photo-overlay">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-        <span>Upload</span>
-        <span>Photo</span>
-      </div>
+      <img id="profilePhoto" src="images/profile.jpg" alt="Profile Photo" />
+     
       <input type="file" id="photoInput" accept="image/*" />
     </div>
 
-    <!-- Name -->
     <div class="s-name">
       <h1>Supawan<br/>Mongwicha</h1>
       <div class="nickname">" Star "</div>
@@ -662,57 +711,53 @@
 
     <div class="s-divider"></div>
 
-    <!-- Contact -->
     <div class="s-section-title">Contact</div>
-  <ul class="contact-list">
-  <li><span class="ic">📧</span><span>supawan.mongwicha (gmail.com)</span></li>
-  <li><span class="ic">🏠</span><span>Chonburi, Thailand</span></li>
-  <li><span class="ic">🌐</span><span>GitHub: SupawanMongwicha</span></li>
-</ul>
+    <ul class="contact-list">
+      <li><span class="ic">📧</span><span>supawan.mongwicha (gmail.com)</span></li>
+      <li><span class="ic">🏠</span><span>Chonburi, Thailand</span></li>
+      <li><span class="ic">🌐</span><span>GitHub: SupawanMongwicha</span></li>
+    </ul>
 
-  <!-- Tech Skills -->
-<div class="s-section-title">Technical Skills</div>
-<div class="skill-block">
-  <div class="skill-item">
-    <div class="skill-label">ERP / Infor Syteline <span>Working Knowledge</span></div>
-    <div class="skill-bar"><div class="skill-fill" style="width:68%;--d:.2s"></div></div>
-  </div>
-  <div class="skill-item">
-    <div class="skill-label">Anaplan SCM <span>Working Knowledge</span></div>
-    <div class="skill-bar"><div class="skill-fill" style="width:65%;--d:.35s"></div></div>
-  </div>
-  <div class="skill-item">
-    <div class="skill-label">C# / .NET / VB <span>Good</span></div>
-    <div class="skill-bar"><div class="skill-fill" style="width:72%;--d:.5s"></div></div>
-  </div>
-  <div class="skill-item">
-    <div class="skill-label">SQL / Oracle Database <span>Good</span></div>
-    <div class="skill-bar"><div class="skill-fill" style="width:74%;--d:.65s"></div></div>
-  </div>
-  <div class="skill-item">
-    <div class="skill-label">HTML / CSS / Web Application <span>Good</span></div>
-    <div class="skill-bar"><div class="skill-fill" style="width:68%;--d:.8s"></div></div>
-  </div>
-  <div class="skill-item">
-    <div class="skill-label">Crystal Reports <span>Working Knowledge</span></div>
-    <div class="skill-bar"><div class="skill-fill" style="width:60%;--d:.95s"></div></div>
-  </div>
-</div>
+    <div class="s-section-title">Technical Skills</div>
+    <div class="skill-block">
+      <div class="skill-item">
+        <div class="skill-label">ERP / Infor Syteline <span>Working Knowledge</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:68%;--d:.2s"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-label">Anaplan SCM <span>Working Knowledge</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:65%;--d:.35s"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-label">C# / .NET / VB <span>Good</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:72%;--d:.5s"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-label">SQL / Oracle Database <span>Good</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:74%;--d:.65s"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-label">HTML / CSS / Web Application <span>Good</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:68%;--d:.8s"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-label">Crystal Reports <span>Working Knowledge</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:60%;--d:.95s"></div></div>
+      </div>
+    </div>
 
-<!-- Tools -->
-<div class="s-section-title">Tools & Systems</div>
-<div class="tag-cloud" style="margin-bottom:1.8rem">
-  <span class="tag">MES Clocking</span>
-  <span class="tag">Microsoft Dynamics CRM</span>
-  <span class="tag">Windows Forms</span>
-  <span class="tag">BOSS ERP</span>
-  <span class="tag">Crystal Reports</span>
-  <span class="tag">UAT Testing</span>
-  <span class="tag">Data Migration</span>
-  <span class="tag">Visual Studio</span>
-</div>
+    <div class="s-section-title">Tools & Systems</div>
+    <div class="tag-cloud">
+      <span class="tag">MES Clocking</span>
+      <span class="tag">Microsoft Dynamics CRM</span>
+      <span class="tag">Windows Forms</span>
+      <span class="tag">BOSS ERP</span>
+      <span class="tag">Crystal Reports</span>
+      <span class="tag">UAT Testing</span>
+      <span class="tag">Data Migration</span>
+      <span class="tag">Visual Studio</span>
+    </div>
 
-    <!-- Language -->
     <div class="s-section-title">Language</div>
     <div class="lang-item">
       <span style="font-size:.73rem;color:#c4dcd0;min-width:55px;">Thai</span>
@@ -733,83 +778,81 @@
 
   </aside>
 
-  <!-- ════ MAIN ════ -->
   <main class="main">
 
-    <!-- Header -->
-<header class="main-header">
-  <div class="deco-line">IT</div>
+    <header class="main-header">
+      <div class="deco-line">IT</div>
 
-  <div class="header-wrapper">
-    <div class="header-top">
-      
-      <div class="header-left">
-        <h1>
-          <span class="first">Supawan</span><br/>
-          Mongwicha
-        </h1>
-        <div class="sub">
-          IT Application Engineer · Business Analyst · Software Developer
-        </div>
-        <div class="mini-summary">
-          Experience in ERP, MES, application support, database troubleshooting,
-          internal system development, and business process improvement.
+      <div class="header-wrapper">
+        <div class="header-top">
+
+          <div class="header-left">
+            <h1>
+              <span class="first">Supawan</span><br/>
+              Mongwicha
+            </h1>
+            <div class="sub">
+              IT Application Engineer · Business Analyst · Software Developer
+            </div>
+            <div class="mini-summary">
+              Experience in ERP, MES, application support, database troubleshooting,
+              internal system development, and business process improvement.
+            </div>
+          </div>
+
+          <div class="career-card">
+            <h3>Career Snapshot</h3>
+
+            <div class="career-list">
+              <div class="career-item">
+                <div class="career-head">
+                  <span class="career-role">Software Engineer</span>
+                  <span class="career-years">5 Y</span>
+                </div>
+                <div class="career-bar"><span style="width:100%"></span></div>
+              </div>
+
+              <div class="career-item">
+                <div class="career-head">
+                  <span class="career-role">IT Business Analyst</span>
+                  <span class="career-years">3 Y 2 M</span>
+                </div>
+                <div class="career-bar"><span style="width:64%"></span></div>
+              </div>
+
+              <div class="career-item">
+                <div class="career-head">
+                  <span class="career-role">IT Application Engineer</span>
+                  <span class="career-years">2 Y</span>
+                </div>
+                <div class="career-bar"><span style="width:40%"></span></div>
+              </div>
+
+              <div class="career-item">
+                <div class="career-head">
+                  <span class="career-role">.NET Developer</span>
+                  <span class="career-years">1 Y</span>
+                </div>
+                <div class="career-bar"><span style="width:20%"></span></div>
+              </div>
+
+              <div class="career-item">
+                <div class="career-head">
+                  <span class="career-role">Software Administrator</span>
+                  <span class="career-years">7 M</span>
+                </div>
+                <div class="career-bar"><span style="width:12%"></span></div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
+    </header>
 
-    <div class="career-card">
-      <h3>Career Snapshot</h3>
-
-      <div class="career-list">
-        <div>
-          <div class="career-row">
-            <div class="career-years">5 Y</div>
-            <div class="career-bar"><span style="width:100%"></span></div>
-          </div>
-          <div class="career-role">Software Engineer</div>
-        </div>
-
-        <div>
-          <div class="career-row">
-            <div class="career-years">3 Y 2 M</div>
-            <div class="career-bar"><span style="width:64%"></span></div>
-          </div>
-          <div class="career-role">IT Business Analyst</div>
-        </div>
-
-        <div>
-          <div class="career-row">
-            <div class="career-years">2 Y</div>
-            <div class="career-bar"><span style="width:40%"></span></div>
-          </div>
-          <div class="career-role">IT Application Engineer</div>
-        </div>
-
-        <div>
-          <div class="career-row">
-            <div class="career-years">1 Y</div>
-            <div class="career-bar"><span style="width:20%"></span></div>
-          </div>
-          <div class="career-role">.NET Developer</div>
-        </div>
-
-        <div>
-          <div class="career-row">
-            <div class="career-years">7 M</div>
-            <div class="career-bar"><span style="width:12%"></span></div>
-          </div>
-          <div class="career-role">Software Administrator</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</header>
-
-    <!-- Experience -->
     <section class="section">
       <div class="sec-title">Professional Experience</div>
 
-      <!-- Job 1 -->
       <div class="exp-item">
         <div class="timeline-line"><div class="timeline-dot"></div></div>
         <div class="exp-body">
@@ -829,7 +872,6 @@
         </div>
       </div>
 
-      <!-- Job 2 -->
       <div class="exp-item">
         <div class="timeline-line"><div class="timeline-dot"></div></div>
         <div class="exp-body">
@@ -849,7 +891,6 @@
         </div>
       </div>
 
-      <!-- Job 3 -->
       <div class="exp-item">
         <div class="timeline-line"><div class="timeline-dot"></div></div>
         <div class="exp-body">
@@ -868,7 +909,6 @@
         </div>
       </div>
 
-      <!-- Job 4 -->
       <div class="exp-item">
         <div class="timeline-line"><div class="timeline-dot"></div></div>
         <div class="exp-body">
@@ -888,7 +928,6 @@
         </div>
       </div>
 
-      <!-- Job 5 -->
       <div class="exp-item">
         <div class="timeline-line"><div class="timeline-dot"></div></div>
         <div class="exp-body">
@@ -908,7 +947,6 @@
       </div>
     </section>
 
-    <!-- Education -->
     <section class="section">
       <div class="sec-title">Education</div>
       <div class="edu-card">
@@ -925,13 +963,11 @@
 </div>
 
 <script>
-  // ── Photo upload via FileReader (100% Offline) ──
-  const wrap      = document.getElementById('photoWrap');
-  const input     = document.getElementById('photoInput');
-  const photo     = document.getElementById('profilePhoto');
+  const wrap = document.getElementById('photoWrap');
+  const input = document.getElementById('photoInput');
+  const photo = document.getElementById('profilePhoto');
   const STORE_KEY = 'resume_photo_dao';
 
-  // Restore saved photo
   const saved = localStorage.getItem(STORE_KEY);
   if (saved) photo.src = saved;
 
@@ -945,11 +981,11 @@
     reader.onload = function (e) {
       const dataURL = e.target.result;
       photo.src = dataURL;
-      // Save to localStorage so it persists after refresh
       try { localStorage.setItem(STORE_KEY, dataURL); } catch(e) {}
     };
     reader.readAsDataURL(file);
   });
 </script>
+
 </body>
 </html>
