@@ -600,7 +600,30 @@
       border-radius: 18px;
     }
   }
+.header-wrapper {
+  position: relative;
+  padding: 1.2rem 1.4rem 1.4rem;
+  border: 2px solid var(--emerald);
+  border-left: 4px solid var(--jade);
+  border-radius: 10px;
+  background: rgba(232, 245, 238, 0.4);
+}
 
+.header-wrapper::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: 0;
+  width: 120px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--emerald), var(--jade));
+  border-top-left-radius: 10px;
+}
+
+/* เงานิด ๆ ให้ไม่แบน */
+.header-wrapper {
+  box-shadow: 0 6px 18px rgba(13, 51, 32, 0.08);
+}
 </style>
 </head>
 <body>
@@ -714,21 +737,25 @@
   <main class="main">
 
     <!-- Header -->
- <header class="main-header">
+<header class="main-header">
   <div class="deco-line">IT</div>
 
-  <div class="header-top">
-    <div class="header-left">
-      <h1>
-        <span class="first">Supawan</span><br/>
-        Mongwicha
-      </h1>
-      <div class="sub">IT Application Engineer &nbsp;·&nbsp; Business Analyst &nbsp;·&nbsp; Software Developer</div>
-      <div class="mini-summary">
-        Experience in ERP, MES, application support, database troubleshooting, internal system development,
-        and business process improvement across manufacturing and supply chain environments.
+  <div class="header-wrapper">
+    <div class="header-top">
+      
+      <div class="header-left">
+        <h1>
+          <span class="first">Supawan</span><br/>
+          Mongwicha
+        </h1>
+        <div class="sub">
+          IT Application Engineer · Business Analyst · Software Developer
+        </div>
+        <div class="mini-summary">
+          Experience in ERP, MES, application support, database troubleshooting,
+          internal system development, and business process improvement.
+        </div>
       </div>
-    </div>
 
     <div class="career-card">
       <h3>Career Snapshot</h3>
